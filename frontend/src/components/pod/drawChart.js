@@ -1,9 +1,12 @@
 import * as d3 from "d3";
+import fetchdata from "./fetchdata";
 
+
+// d3 components that are used for the donut chart 
 const drawChart = (element, data) => {
-  const colors = ["#0CA85D", "#9F43CC", "#2B87E3", "#EBA10F"]; //blue, yellow, green, purple
+  const colors = ["#0CA85D", "#9F43CC", "#2B87E3", "#EBA10F"];
   const boxSize = 500;
-
+  
   d3.select(element).select("svg").remove(); // Remove the old svg
   // Create new svg
   const svg = d3
@@ -22,7 +25,7 @@ const drawChart = (element, data) => {
 
   const arcs = svg.selectAll().data(pieGenerator(data)).enter();
 
-  //recipe label
+  //recipe label 
   const recipe = svg
     .append('g')
     .attr('class', 'bar-header')
@@ -31,8 +34,11 @@ const drawChart = (element, data) => {
     .style('font-size', '2.5em')
     .append('text');
 
-  recipe.append('tspan').text('Recipe A');
-
+  recipe.append('tspan').text('recipe A');
+  <div>
+    <fetchdata />
+  </div>
+  //Sub label (time taken)
   recipe
     .append('tspan')
     .attr('x', 35)
